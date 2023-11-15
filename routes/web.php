@@ -24,20 +24,13 @@ Route::get('/', function () {
 });
 
 // Single Listing
-Route::get('/listing/{id}', function($id){
-    return view('listing',[
-        'heading' => 'Search for '. $id,
-        'listings' => Listing::find($id)
+Route::get('/listing/{listing}', function (Listing $listing) {
+
+
+    return view('listing', [
+        'listing' => $listing
     ]);
 });
 
 
 
-Route::get('/hello', function () {
-    return "hola Mundo";
-});
-
-Route::get('/post/{id}', function ($id) {
-    // dump($id);
-    return response('Post ' . $id);
-})->where('id', '[0-9]+');
